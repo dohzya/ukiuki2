@@ -1,38 +1,7 @@
-## Sample Blog with API-based CMS
+Ukiuki 2
+========
 
-Node.js blog is a blog template with content managed into prismic.io (API-based CMS).
 
-#### Getting started
-
-Read [this guide](https://prismic.io/docs/examples/blog#?lang=node) for instructions to create your repository and use the sample blog.
-
-#### Deploy your Node.js blog
-
-An easy way to deploy your Node.js blog is to use [Heroku](http://www.heroku.com). Just follow these few simple steps once you have successfully [signed up](https://id.heroku.com/signup/www-header) and [installed the Heroku toolbelt](https://toolbelt.heroku.com/):
-
-Create a new Heroku application
-
-```
-$ heroku create
-```
-
-Push your code to heroku:
-
-```
-$ git push heroku master
-```
-
-Ensure you have at least one node running:
-
-```
-$ heroku ps:scale web=1
-```
-
-You can now browse your application online:
-
-```
-$ heroku open
-```
 
 ### Licence
 
