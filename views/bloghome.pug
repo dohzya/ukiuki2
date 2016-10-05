@@ -5,12 +5,10 @@ block title
 
 block body
     body.page
-        - var image = bloghome.getImage('bloghome.image')
         - var maybeBloghomeImageUrl = image ? image.getView("main").url : ''
         - var illustrationUrl = maybeBloghomeImageUrl || ''
 
         div.home
-            div.blog-avatar(style='background-image: url(' + illustrationUrl + ');')
             h1.blog-title !{bloghome.getText('bloghome.headline')}
             p.blog-description !{bloghome.getText('bloghome.description')}
 
@@ -21,6 +19,7 @@ block body
             div.edito-content !{bloghome.getStructuredText('bloghome.edito').asHtml()}
 
         div.blog-main
+            div.articles-name Liste des articles
             for post in posts
                 div.blog-post(data-wio-id=post.id)
                     h2
@@ -36,4 +35,4 @@ block body
                     if firstParagraphInPost.length > textLimit
                         = limitedText.substr(0, limitedText.lastIndexOf(' ')) + '…'
                     else
-                        = firstParagraphInPost
+                        = firstParagraphInPost + ' (…)'

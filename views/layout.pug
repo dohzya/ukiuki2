@@ -1,4 +1,4 @@
-doctype html(lang='en')
+doctype html(lang='fr')
 
 head
     block title
@@ -12,6 +12,8 @@ head
     script
       = ctx?"window.prismic = { endpoint: '" + ctx.endpoint + "' };":""
     script(src="//static.cdn.prismic.io/prismic.min.js")
+
+    script(src="/javascript/main.js")
 body
     block body
 footer

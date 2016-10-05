@@ -15,8 +15,8 @@
       }
     },
     "edito_date" : {
-      "type": "Date",
-      "fieldset": "Edito",
+      "type" : "Date",
+      "fieldset" : "Edito",
       "config" : {
         "placeholder" : "mois-jour-année (☹️)"
       }

@@ -5,10 +5,9 @@ block title
 block body
     body
         div.main
-
             div.outer-container
                 div.back
-                    a(href='./') retour
+                    a(href='/') retour
 
                 h1(data-wio-id=post.id)
                     != post.getText('post.title') || 'Sans-titre'
@@ -24,27 +23,58 @@ block body
                         div.post-part.single.container
                             span.block-quotation !{slice.value.asText()}
                     when 'image-with-caption'
-                        - var imageWithCaption = slice.value.toArray()[0]
-                        - var imageUrl = imageWithCaption.getImage('illustration') ? imageWithCaption.getImage('illustration').url : ''
-                        - var caption = imageWithCaption.get('caption')
                         case slice.label
                             when 'image-full-width'
-                                div.blog-header.single(style='background-image: url(' + imageUrl + ');')
-                                    div.wrapper
-                                        if caption
-                                            h1 !{caption.asText()}
+                                for imageWithCaption in slice.value.toArray()
+                                    - var caption = imageWithCaption.get('caption')
+                                    - var image = imageWithCaption.getImage('illustration')
+                                    - var imageUrl = image ? image.url : ''
+                                    div.blog-header.single(style='background-image: url(' + imageUrl + ');')
+                                        div.wrapper
+                                            if caption
+                                                h1 !{caption.asText()}
                             when 'emphasized'
-                                div.post-part.single.container
-                                    p.block-img.emphasized
-                                        img(src=imageUrl)
-                                    if caption
-                                        p
-                                            span.image-label !{caption.asText()}
+                                for imageWithCaption in slice.value.toArray()
+                                    - var caption = imageWithCaption.get('caption')
+                                    - var image = imageWithCaption.getImage('illustration')
+                                    - var imageUrl = image ? image.url : ''
+                                    div.post-part.single.container
+                                        p.block-img.emphasized
+                                            img(src=imageUrl)
+                                        if caption
+                                            p
+                                                span.image-label !{caption.asText()}
 
                             default
                                 div.post-part.single.container
-                                    p.block-img
-                                        img(src=imageUrl)
-                                    if caption
-                                        p
-                                            span.image-label !{caption.asText()}
+                                    div.gallery
+                                        for imageWithCaption in slice.value.toArray()
+                                            - var caption = imageWithCaption.get('caption')
+                                            - var captionText = caption ? caption.asText() : ''
+                                            - var small = imageWithCaption.getImageView('illustration', 'small')
+                                            - var smallUrl = small ? small.url : ''
+                                            - var full = imageWithCaption.getImage('illustration')
+                                            - var fullUrl = full ? full.url : ''
+                                            img(src=smallUrl, alt=captionText, data-url=fullUrl)
+
+            div.comments
+                div#disqus_thread
+                script.
+                    /**
+                     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+                    /*
+                    var disqus_config = function () {
+                        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+                    */
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                        var d = document, s = d.createElement('script');
+                        s.src = '//okawari-dohzya.disqus.com/embed.js';
+                        s.setAttribute('data-timestamp', +new Date());
+                        (d.head || d.body).appendChild(s);
+                    })();
+                noscript
+                    | Please enable JavaScript to view the
+                    a(href='https://disqus.com/?ref_noscript') comments powered by Disqus.

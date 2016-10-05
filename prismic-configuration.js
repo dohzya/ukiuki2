@@ -10,10 +10,10 @@ exports.Configuration = {
   // As your project grows, you should update this function according to your routes
   linkResolver: function(doc) {
     if (doc.type == 'blog') {
-      return '/blog';
+      return '/';
     }
     if (doc.type == 'post') {
-      return '/blog/' + encodeURIComponent(doc.uid);
+      return '/article/' + encodeURIComponent(doc.uid);
     }
 
     return '/';

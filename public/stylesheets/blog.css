@@ -15,6 +15,13 @@ body {
   margin: auto;
 }
 
+.blog-main .articles-name {
+  font-size: 17px;
+  border-bottom: 1px solid #dadada;
+  padding: 1em 0;
+  margin: 1em 0;
+}
+
 /*
  * Home header
  */
@@ -34,11 +41,10 @@ body {
 
 .home .blog-description {
   font-family: 'Lora', serif;
-  font-size: 18px;
+  font-size: 23px;
   line-height: 30px;
-  /*padding-bottom: 3rem;*/
   color: #9a9a9a;
-  /*border-bottom: 1px solid #dadada;*/
+  font-style: italic;
 }
 
 /*
@@ -199,6 +205,70 @@ body {
   margin-bottom: 2rem;
 }
 
+.post-part.single.container .gallery img {
+  width: inherit;
+  height: inherit;
+  cursor: pointer;
+}
+
+.gallery {
+  margin-bottom: 2rem;
+}
+
+.gallery-popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(223, 192, 205, 0.9);
+  padding: 5%;
+}
+
+.gallery-popup-image {
+  position: relative;
+  height: 95%;
+  text-align: center;
+  width: 80%;
+  margin: auto;
+}
+
+.gallery-popup-image img {
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle;
+}
+
+.gallery-popup-caption p {
+  height: 10%;
+  text-align: center;
+  font-size: 1.2em;
+  width: 80%;
+  margin: auto;
+}
+
+.gallery-popup-arrow {
+  cursor: pointer;
+}
+.gallery-popup-arrow:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.gallery-popup-arrow-left {
+  width: 10%;
+  text-align: center;
+  margin: auto;
+  float: left;
+  height: 100%;
+}
+.gallery-popup-arrow-right {
+  width: 10%;
+  text-align: center;
+  margin: auto;
+  float: right;
+  height: 100%;
+}
+
 .post-part.single .block-quotation:before {
   content: '« ';
 }
@@ -217,6 +287,11 @@ body {
 .post-part li {
   margin-left: 1em;
   list-style-type: initial;
+}
+
+.comments {
+  max-width: 700px;
+  margin: auto;
 }
 
 .wio-link {

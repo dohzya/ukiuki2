@@ -57,9 +57,11 @@
                 "illustration" : {
                   "type" : "Image",
                   "config" : {
-                    "constraint" : {
-                      "width" : 640
-                    }
+                    "thumbnails" : [ {
+                      "name" : "small",
+                      "width" : 200,
+                      "height" : 200
+                    } ]
                   }
                 },
                 "caption" : {
