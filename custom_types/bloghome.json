@@ -1,0 +1,31 @@
+{
+  "Main" : {
+    "headline" : {
+      "type" : "StructuredText",
+      "config" : {
+        "placeholder" : "Titre",
+        "single" : "heading1"
+      }
+    },
+    "description" : {
+      "type" : "StructuredText",
+      "config" : {
+        "placeholder" : "Sous-titre",
+        "single" : "heading2"
+      }
+    },
+    "edito_date" : {
+      "type": "Date",
+      "fieldset": "Edito",
+      "config" : {
+        "placeholder" : "mois-jour-année (☹️)"
+      }
+    },
+    "edito" : {
+      "type" : "StructuredText",
+      "config" : {
+        "placeholder" : "Contenu"
+      }
+    }
+  }
+}
