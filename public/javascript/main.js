@@ -14,26 +14,66 @@
     var url = img.getAttribute('data-url');
     var index = images.indexOf(img);
 
+    var removeFns = [];
+    function removeFn() {
+      removeFns.forEach(function (fn) { fn(); });
+    }
+
     return createTag(document.body, 'div', function (gb) {
+      removeFns.push(function () {
+        document.body.removeChild(gb);
+      });
       gb.className = 'gallery-popup';
 
       if (index > 0 && index <= images.length) {
         createTag(gb, 'div', function (leftArrow) {
           leftArrow.className = 'gallery-popup-arrow gallery-popup-arrow-left';
-          leftArrow.onclick = function () {
-            document.body.removeChild(gb);
+          createTag(leftArrow, 'span', function (arrow) {
+            arrow.innerText = '<';
+          });
+          function previous() {
+            removeFn();
             imagePopup(images[index - 1], images);
-          };
+          }
+          leftArrow.onclick = previous;
+          function keyHandler(e) {
+            if (e.key == 'ArrowLeft') {
+              previous();
+            }
+            if (e.key == 'Escape') {
+              removeFn();
+            }
+          }
+          document.addEventListener('keydown', keyHandler);
+          removeFns.push(function () {
+            document.removeEventListener('keydown', keyHandler);
+          });
         });
       }
 
       if (index >= 0 && index < images.length-1) {
         createTag(gb, 'div', function (rightArrow) {
           rightArrow.className = 'gallery-popup-arrow gallery-popup-arrow-right';
-          rightArrow.onclick = function () {
-            document.body.removeChild(gb);
+          createTag(rightArrow, 'span', function (arrow) {
+            arrow.innerText = '>';
+          });
+          function next() {
+            removeFn();
             imagePopup(images[index + 1], images);
-          };
+          }
+          rightArrow.onclick = next;
+          function keyHandler(e) {
+            if (e.key == 'ArrowRight') {
+              next();
+            }
+            if (e.key == 'Escape') {
+              removeFn();
+            }
+          }
+          document.addEventListener('keydown', keyHandler);
+          removeFns.push(function () {
+            document.removeEventListener('keydown', keyHandler);
+          });
         });
       }
 
@@ -52,9 +92,7 @@
         });
       });
 
-      gb.onclick = function () {
-        document.body.removeChild(gb);
-      };
+      gb.onclick = removeFn;
     });
   }
 

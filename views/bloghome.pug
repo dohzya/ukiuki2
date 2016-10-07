@@ -21,9 +21,10 @@ block body
         div.blog-main
             div.articles-name Liste des articles
             for post in posts
+                - var url = ctx.linkResolver(post)
                 div.blog-post(data-wio-id=post.id)
                     h2
-                        a(href=ctx.linkResolver(post))
+                        a(href=url)
                             != post.getText('post.title') || 'Sans-titre'
                     p.blog-post-meta
                         span.created-at !{general.getDate(post, 'post.date')}
@@ -35,4 +36,6 @@ block body
                     if firstParagraphInPost.length > textLimit
                         = limitedText.substr(0, limitedText.lastIndexOf(' ')) + '…'
                     else
-                        = firstParagraphInPost + ' (…)'
+                        = firstParagraphInPost + ' '
+                        a(href=url)
+                            span.seemore (…)
