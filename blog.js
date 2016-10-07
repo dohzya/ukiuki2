@@ -1,7 +1,8 @@
 var Prismic = require('express-prismic').Prismic;
-var configuration = require('./prismic-configuration').Configuration;
+var configuration = require('./configuration').Configuration;
 
 exports.bloghome = function(req, res) {
+  res.locals.config = configuration;
   var p = Prismic.withContext(req, res);
   p.queryFirst('[[:d = at(document.type, "bloghome")]]', function (err, bloghome) {
     if (err) { configuration.onPrismicError(err, req, res, 'get bloghome'); return; }
@@ -25,6 +26,7 @@ exports.bloghome = function(req, res) {
 };
 
 exports.post = function(req, res) {
+  res.locals.config = configuration;
   var uid = req.params.uid;
   var p = Prismic.withContext(req, res);
   p.getByUID('post', uid, function then(err, post) {

@@ -12,7 +12,7 @@ var session = require('express-session');
 var errorHandler = require('errorhandler');
 var path = require('path');
 var prismic = require('express-prismic').Prismic;
-var configuration = require('./prismic-configuration').Configuration;
+var configuration = require('./configuration').Configuration;
 var blog = require('./blog');
 var app = express();
 

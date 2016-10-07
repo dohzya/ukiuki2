@@ -5,6 +5,8 @@ exports.Configuration = {
   // -- Access token if the Master is not open
   accessToken: process.env.PRISMIC_API_TOKEN,
 
+  domainBaseUrl: 'http://okawari.dohzya.com',
+
   // -- Links resolution rules
   // This function will be used to generate links to Prismic.io documents
   // As your project grows, you should update this function according to your routes
