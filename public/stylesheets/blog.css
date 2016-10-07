@@ -392,11 +392,6 @@ footer a {
     padding: 0;
   }
 
-  .block-img.emphasized {
-    width: 130%;
-    margin: 0 -15% 2rem -15%;
-  }
-
   .post-part.single .block-citation,
   .blog-main.single .block-citation {
     margin: 20px 0;
