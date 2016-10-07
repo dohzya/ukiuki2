@@ -2,18 +2,18 @@
 /**
  * Module dependencies.
  */
-var express = require('express'),
-    favicon = require('serve-favicon'),
-    logger = require('morgan'),
-    cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser'),
-    methodOverride = require('method-override'),
-    session = require('express-session'),
-    errorHandler = require('errorhandler'),
-    path = require('path'),
-    prismic = require('express-prismic').Prismic,
-    configuration = require('./prismic-configuration').Configuration,
-    blog = require('./blog');
+var express = require('express');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var session = require('express-session');
+var errorHandler = require('errorhandler');
+var path = require('path');
+var prismic = require('express-prismic').Prismic;
+var configuration = require('./prismic-configuration').Configuration;
+var blog = require('./blog');
 var app = express();
 
 app.locals.general = require('./includes/general');
@@ -21,7 +21,6 @@ app.locals.general = require('./includes/general');
 // Prismic.io configuration
 
 prismic.init(configuration);
-
 
 // all environments
 app.set('port', process.env.PORT || 3000);

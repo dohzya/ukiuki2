@@ -8,7 +8,7 @@ exports.Configuration = {
   // -- Links resolution rules
   // This function will be used to generate links to Prismic.io documents
   // As your project grows, you should update this function according to your routes
-  linkResolver: function(doc) {
+  linkResolver: function (doc) {
     if (doc.type == 'blog') {
       return '/';
     }
@@ -18,9 +18,9 @@ exports.Configuration = {
 
     return '/';
   },
-  onPrismicError: function(err, req, res, context) {
-    res.status(500)
-      .send("Error 500: " + err.message);
+
+  onPrismicError: function (err, req, res, context) {
+    res.status(500).send("Error 500: " + err.message);
     console.error("Error ", {context:context}, ")", err);
   }
 
