@@ -25,6 +25,16 @@
       });
       gb.className = 'gallery-popup';
 
+      function escHandler(e) {
+        if (e.key == 'Escape') {
+          removeFn();
+        }
+      }
+      document.addEventListener('keydown', escHandler);
+      removeFns.push(function () {
+        document.removeEventListener('keydown', escHandler);
+      });
+
       if (index > 0 && index <= images.length) {
         createTag(gb, 'div', function (leftArrow) {
           leftArrow.className = 'gallery-popup-arrow gallery-popup-arrow-left';
@@ -39,9 +49,6 @@
           function keyHandler(e) {
             if (e.key == 'ArrowLeft') {
               previous();
-            }
-            if (e.key == 'Escape') {
-              removeFn();
             }
           }
           document.addEventListener('keydown', keyHandler);
@@ -65,9 +72,6 @@
           function keyHandler(e) {
             if (e.key == 'ArrowRight') {
               next();
-            }
-            if (e.key == 'Escape') {
-              removeFn();
             }
           }
           document.addEventListener('keydown', keyHandler);
