@@ -45,6 +45,7 @@ app.route('/article/:uid').get(blog.post);
 app.route('/preview').get(prismic.preview);
 
 app.route('/robots.txt').get(function (req, res) {
+  res.append('Content-type', 'text/plain');
   res.send("User-agent: *\nDisallow: /");
 });
 
