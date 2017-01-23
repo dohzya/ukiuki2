@@ -10,7 +10,7 @@ block body
                     a(href='/') retour
 
                 h1(data-wio-id=post.id)
-                    != post.getText('post.title') || 'Sans-titre'
+                    != post.getHtml('post.title').replace(/<\/?h\d>/g, '') || 'Sans-titre'
 
             - var sliceZone = post.getSliceZone('post.body') || {}
             for slice in (sliceZone.slices || [])

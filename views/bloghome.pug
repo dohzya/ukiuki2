@@ -25,6 +25,6 @@ block body
                 div.blog-post(data-wio-id=post.id)
                     h2
                         a(href=url)
-                            != post.getText('post.title') || 'Sans-titre'
+                            != post.getHtml('post.title').replace(/<\/?h\d>/g, '') || 'Sans-titre'
                     p.blog-post-meta
                         span.created-at !{general.getDate(post, 'post.date')}
