@@ -46,7 +46,7 @@ app.route('/preview').get(prismic.preview);
 
 app.route('/robots.txt').get(function (req, res) {
   res.append('Content-type', 'text/plain');
-  res.send("User-agent: *\nDisallow: /");
+  res.send("User-agent: *\nDisallow: /article/");
 });
 
 var PORT = app.get('port');
